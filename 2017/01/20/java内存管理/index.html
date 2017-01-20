@@ -6,23 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hello World | Hexo</title>
+  <title>java内存管理 | idear的技术探索</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="java 的内存管理机制有别与C和C++，java程序员不用手动去分配和释放内存，java是用的垃圾回收器(GC)自动回收，所以java的内存管理机制其实就是GC的工作机制。要理解GC的工作机制，我们要首先看下java 的运行时环境，我们都知道java是运行在java虚拟机上(JVM)的，而GC就是java虚拟机提供的一个垃圾回收工具。
+java虚拟机(JVM)JVM主要包括两个子系统和两个组件。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/01/19/hello-world/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2017-01-19T12:01:56.208Z">
+<meta property="og:title" content="java内存管理">
+<meta property="og:url" content="http://yoursite.com/2017/01/20/java内存管理/index.html">
+<meta property="og:site_name" content="idear的技术探索">
+<meta property="og:description" content="java 的内存管理机制有别与C和C++，java程序员不用手动去分配和释放内存，java是用的垃圾回收器(GC)自动回收，所以java的内存管理机制其实就是GC的工作机制。要理解GC的工作机制，我们要首先看下java 的运行时环境，我们都知道java是运行在java虚拟机上(JVM)的，而GC就是java虚拟机提供的一个垃圾回收工具。
+java虚拟机(JVM)JVM主要包括两个子系统和两个组件。">
+<meta property="og:image" content="http://yoursite.com/2017/01/20/java内存管理/jvm.png">
+<meta property="og:image" content="http://yoursite.com/2017/01/20/java内存管理/javaheap.png">
+<meta property="og:updated_time" content="2017-01-20T11:58:24.328Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="java内存管理">
+<meta name="twitter:description" content="java 的内存管理机制有别与C和C++，java程序员不用手动去分配和释放内存，java是用的垃圾回收器(GC)自动回收，所以java的内存管理机制其实就是GC的工作机制。要理解GC的工作机制，我们要首先看下java 的运行时环境，我们都知道java是运行在java虚拟机上(JVM)的，而GC就是java虚拟机提供的一个垃圾回收工具。
+java虚拟机(JVM)JVM主要包括两个子系统和两个组件。">
+<meta name="twitter:image" content="http://yoursite.com/2017/01/20/java内存管理/jvm.png">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="idear的技术探索" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -49,10 +52,10 @@ Quick">
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="null" class="js-avatar">
+			<img src="http://imgsrc.baidu.com/forum/w%3D580/sign=d6e9987f59b5c9ea62f303ebe538b622/aa9eb2b7d0a20cf4d3df50ab74094b36acaf9910.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">John Doe</a></h1>
+		  <h1 class="header-author"><a href="/">Idear Lee</a></h1>
 		</hgroup>
 		
 
@@ -61,7 +64,7 @@ Quick">
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -83,13 +86,11 @@ Quick">
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/idearlee/" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+					<a class="weibo" target="_blank" href="http://weibo.com/lonelyfacy/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1/" title="weibo"><i class="icon-weibo"></i></a>
 		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-bo-ren-81/activities" title="zhihu"><i class="icon-zhihu"></i></a>
 		        
 			</div>
 		</nav>
@@ -107,10 +108,10 @@ Quick">
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="null" class="js-avatar">
+				<img src="http://imgsrc.baidu.com/forum/w%3D580/sign=d6e9987f59b5c9ea62f303ebe538b622/aa9eb2b7d0a20cf4d3df50ab74094b36acaf9910.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">John Doe</h1>
+			  <h1 class="header-author js-header-author">Idear Lee</h1>
 			</hgroup>
 			
 			
@@ -124,13 +125,11 @@ Quick">
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/idearlee/" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+						<a class="weibo" target="_blank" href="http://weibo.com/lonelyfacy/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1/" title="weibo"><i class="icon-weibo"></i></a>
 			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-bo-ren-81/activities" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
 				</div>
 			</nav>
@@ -141,7 +140,7 @@ Quick">
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -156,35 +155,59 @@ Quick">
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-java内存管理" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      java内存管理
     </h1>
   
 
         
-        <a href="/2017/01/19/hello-world/" class="archive-article-date">
-  	<time datetime="2017-01-19T12:01:56.208Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-19</time>
+        <a href="/2017/01/20/java内存管理/" class="archive-article-date">
+  	<time datetime="2017-01-20T09:42:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>java 的内存管理机制有别与C和C++，java程序员不用手动去分配和释放内存，java是用的垃圾回收器(GC)自动回收，所以java的内存管理机制其实就是GC的工作机制。要理解GC的工作机制，我们要首先看下java 的运行时环境，我们都知道java是运行在java虚拟机上(JVM)的，而GC就是java虚拟机提供的一个垃圾回收工具。</p>
+<h2 id="java虚拟机-JVM"><a href="#java虚拟机-JVM" class="headerlink" title="java虚拟机(JVM)"></a>java虚拟机(JVM)</h2><p>JVM主要包括两个子系统和两个组件。两个子系统分别是Class loader子系统和Execution engine(执行引擎) 子系统；两个组件分别是Runtime data area (运行时数据区域)组件和Native interface(本地接口)组件。<br><a id="more"></a><br>如图一<br><img src="/2017/01/20/java内存管理/jvm.png" alt="logo"></p>
+<h3 id="Class-loader子系统"><a href="#Class-loader子系统" class="headerlink" title="Class loader子系统"></a>Class loader子系统</h3><p>它的作用是根据给定的全限定名类名(如 java.lang.Object)来装载class文件的内容到 Runtime data area中的method area(方法区域)。Java程序员可以extends java.lang.ClassLoader类来写自己的Class loader。  </p>
+<h3 id="Execution-engine子系统"><a href="#Execution-engine子系统" class="headerlink" title="Execution engine子系统"></a>Execution engine子系统</h3><p>它的作用是执行classes中的指令。任何JVM specification实现(JDK)的核心都是Execution engine，不同的JDK例如Sun 的JDK 和IBM的JDK好坏主要就取决于他们各自实现的Execution engine的好坏。</p>
+<h3 id="Native-interface组件"><a href="#Native-interface组件" class="headerlink" title="Native interface组件"></a>Native interface组件</h3><p>它与native libraries交互，是其它编程语言交互的接口也就是我们常说的jni。当调用native方法的时候，就进入了一个全新的并且不再受虚拟机限制的世界，所以也很容易出现JVM无法控制的native heap OutOfMemory。</p>
+<h3 id="Runtime-Data-Area组件"><a href="#Runtime-Data-Area组件" class="headerlink" title="Runtime Data Area组件"></a>Runtime Data Area组件</h3><p>这就是我们常说的JVM的内存了。它主要分为五个部分——<br>1、Heap (堆)：一个Java虚拟实例中只存在一个堆空间<br>2、Method Area(方法区域)：被装载的class的信息存储在Method area的内存中。当虚拟机装载某个类型时，它使用类装载器定位相应的class文件，然后读入这个class文件内容并把它传输到虚拟机中。<br>3、Java Stack(java的栈)：虚拟机只会直接对Java stack执行两种操作：以帧为单位的压栈或出栈<br>4、Program Counter(程序计数器)：每一个线程都有它自己的PC寄存器，也是该线程启动时创建的。PC寄存器的内容总是指向下一条将被执行指令的饿地址，这里的地址可以是一个本地指针，也可以是在方法区中相对应于该方法起始指令的偏移量。<br>5、Native method stack(本地方法栈)：保存native方法进入区域的地址</p>
+<p>以上五部分只有Heap 和Method Area是被所有线程的共享使用的；而Java stack, Program counter 和Native method stack是以线程为粒度的，每个线程独自拥有自己的部分。</p>
+<h4 id="我们先来看看java-Heap"><a href="#我们先来看看java-Heap" class="headerlink" title="我们先来看看java Heap"></a>我们先来看看java Heap</h4><p>如图二<br><img src="/2017/01/20/java内存管理/javaheap.png" alt="logo"></p>
+<ol>
+<li>Young（年轻代）<br>年轻代分三个区。一个Eden区，两个Survivor区。大部分对象在Eden区中生成。当Eden区满时，还存活的对象将被复制到Survivor区（两个中的一个），当这个Survivor区满时，此区的存活对象将被复制到另外一个Survivor区，当这个Survivor去也满了的时候，从第一个Survivor区复制过来的并且此时还存活的对象，将被复制年老区(Tenured。需要注意，Survivor的两个区是对称的，没先后关系，所以同一个区中可能同时存在从Eden复制过来 对象，和从前一个Survivor复制过来的对象，而复制到年老区的只有从第一个Survivor去过来的对象。而且，Survivor区总有一个是空的。  </li>
+<li>Tenured（年老代）<br>年老代存放从年轻代存活的对象。一般来说年老代存放的都是生命期较长的对象。  </li>
+<li>Perm（持久代）<br>用于存放静态文件，如今Java类、方法等。持久代对垃圾回收没有显著影响，但是有些应用可能动态生成或者调用一些class，例如hibernate等，在这种时候需要设置一个比较大的持久代空间来存放这些运行过程中新增的类。持久代大小通过-XX:MaxPermSize=进行设置。<h2 id="对于jvm的理解"><a href="#对于jvm的理解" class="headerlink" title="对于jvm的理解"></a>对于jvm的理解</h2>通常在java栈区域存放的是java的基本数据类型(boolean,byte,int,long,double,short,char,float)和对象的引用变量<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">int a = 10;</div><div class="line">String str =“123”;</div><div class="line">Object obj;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>其中obj即为对象的应用变量<br>heap区存放的是对象和数组<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Object obj = new Object();</div></pre></td></tr></table></figure></p>
+<h3 id="java中数据在内存中是如何存储的"><a href="#java中数据在内存中是如何存储的" class="headerlink" title="java中数据在内存中是如何存储的"></a>java中数据在内存中是如何存储的</h3><h4 id="java的基本数据类型的存储"><a href="#java的基本数据类型的存储" class="headerlink" title="java的基本数据类型的存储"></a>java的基本数据类型的存储</h4><p>Java的基本数据类型共有8种，即int, short, long, byte, float, double, boolean, char(注意，并没有string的基本类型)。这种类型的定义是通过诸如int a = 3； long b = 255L；的形式来定义的。如int a = 3；这里的a是一个指向int类型的引用，指向3这个字面值。这些字面值的数据，由于大小可知，生存期可知(这些字面值定义在某个程序块里面，程序块退出后，字段值就消失了)，出于追求速度的原因，就存在于栈中。<br>另外，栈有一个很重要的特殊性，就是存在栈中的数据可以共享。<br>比如我们同时定义：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">int a=3;</div><div class="line">int b =3;</div></pre></td></tr></table></figure></p>
+<p>编译器先处理int a = 3；首先它会在栈中创建一个变量为a的引用，然后查找有没有字面值为3的地址，没找到，就开辟一个存放3这个字面值的地址，然后将a指向3的地址。接着处理int b = 3；在创建完b这个引用变量后，由于在栈中已经有3这个字面值，便将b直接指向3的地址。这样，就出现了a与b同时均指向3的情况。定义完a与b的值后，再令a = 4；那么，b不会等于4，还是等于3。在编译器内部，遇到时，它就会重新搜索栈中是否有4的字面值，如果没有，重新开辟地址存放4的值；如果已经有了，则直接将a指向这个地址。因此a值的改变不会影响到b的值。</p>
+<h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><p>在Java中，创建一个对象包括对象的声明和实例化两步，下面用一个例题来说明对象的内存模型。<br>假设有类Rectangle定义如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class Rectangle &#123;</div><div class="line">  double width;</div><div class="line">  double height;</div><div class="line">  public Rectangle(double w,double h)&#123;</div><div class="line">     w = width;</div><div class="line">     h = height;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="声明对象时的内存模型"><a href="#声明对象时的内存模型" class="headerlink" title="声明对象时的内存模型"></a>声明对象时的内存模型</h5><p>　用Rectangle rect；声明一个对象rect时，将在栈内存为对象的引用变量rect分配内存空间，但Rectangle的值为空，称rect是一个空对象。空对象不能使用，因为它还没有引用任何”实体”。</p>
+<h5 id="对象实例化时的内存模型"><a href="#对象实例化时的内存模型" class="headerlink" title="对象实例化时的内存模型"></a>对象实例化时的内存模型</h5><p>　当执行rect=new Rectangle(3,5)；时，会做两件事：　在堆内存中为类的成员变量width,height分配内存，并将其初始化为各数据类型的默认值；接着进行显式初始化（类定义时的初始化值）；最后调用构造方法，为成员变量赋值。  返回堆内存中对象的引用（相当于首地址）给引用变量rect,以后就可以通过rect来引用堆内存中的对象了。</p>
+<h5 id="创建多个不同的对象实例"><a href="#创建多个不同的对象实例" class="headerlink" title="创建多个不同的对象实例"></a>创建多个不同的对象实例</h5><p>一个类通过使用new运算符可以创建多个不同的对象实例，这些对象实例将在堆中被分配不同的内存空间，改变其中一个对象的状态不会影响其他对象的状态。例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Rectangle r1= new Rectangle(3,5);</div><div class="line">Rectangle r2= new Rectangle(4,6);</div></pre></td></tr></table></figure></p>
+<p>此时，将在堆内存中分别为两个对象的成员变量width、height分配内存空间，两个对象在堆内存中占据的空间是互不相同的。如果有：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Rectangle r1= new Rectangle(3,5);</div><div class="line">Rectangle r2=r1;</div></pre></td></tr></table></figure></p>
+<p>则在堆内存中只创建了一个对象实例，在栈内存中创建了两个对象引用，两个对象引用同时指向一个对象实例。</p>
+<h5 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h5><p>基本型别都有对应的包装类：如int对应Integer类，double对应Double类等，基本类型的定义都是直接在栈中，如果用包装类来创建对象，就和普通对象一样了。例如：int i=0；i直接存储在栈中。  Integer i（i此时是对象） = new Integer(5)；这样，i对象数据存储在堆中，i的引用存储在栈中，通过栈中的引用来操作对象。</p>
+<h5 id="String"><a href="#String" class="headerlink" title="String"></a>String</h5><p>String是一个特殊的包装类数据。可以用用以下两种方式创建：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String str = new String(<span class="string">"abc"</span>)；</div><div class="line">String str = <span class="string">"abc"</span>;</div></pre></td></tr></table></figure></p>
+<p>第一种创建方式，和普通对象的的创建过程一样；<br>第二种创建方式，Java内部将此语句转化为以下几个步骤：<br>(1) 先定义一个名为str的对String类的对象引用变量：String str；<br>(2) 在栈中查找有没有存放值为”abc”的地址，如果没有，则开辟一个存放字面值为”abc”<br>地址，接着创建一个新的String类的对象o，并将o的字符串值指向这个地址，而且在栈<br>这个地址旁边记下这个引用的对象o。如果已经有了值为”abc”的地址，则查找对象o，并<br>回o的地址。<br>(3) 将str指向对象o的地址。<br>值得注意的是，一般String类中字符串值都是直接存值的。但像String str = “abc”；这种<br>合下，其字符串值却是保存了一个指向存在栈中数据的引用。<br>为了更好地说明这个问题，我们可以通过以下的几个代码进行验证。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String str1=<span class="string">"abc"</span>；</div><div class="line">String str2=<span class="string">"abc"</span>；</div><div class="line">System.out.println(s1==s2)；//<span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<p>注意，这里并不用str1.equals(str2)；的方式，因为这将比较两个字符串的值是否相等。==号，根据JDK的说明，只有在两个引用都指向了同一个对象时才返回真值。而我们在这里要看的是，str1与str2是否都指向了同一个对象。<br>我们再接着看以下的代码。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String str1= new String(<span class="string">"abc"</span>)；</div><div class="line">String str2=<span class="string">"abc"</span>；</div><div class="line">System.out.println(str1==str2)；//<span class="literal">false</span></div></pre></td></tr></table></figure></p>
+<p>创建了两个引用。创建了两个对象。两个引用分别指向不同的两个对象。<br>以上两段代码说明，只要是用new()来新建对象的，都会在堆中创建，而且其字符串是单独存值的，即使与栈中的数据相同，也不会与栈中的数据共享。</p>
+<h5 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h5><p>当定义一个数组，int x[]；或int []x；时，在栈内存中创建一个数组引用，通过该引用（即数组名）来引用数组。x=new int[3]；将在堆内存中分配3个保存int型数据的空间，堆内存的首地址放到栈内存中，每个数组元素被初始化为0。</p>
+<h5 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h5><p>用static的修饰的变量和方法，实际上是指定了这些变量和方法在内存中的”固定位置”－static storage，可以理解为所有实例对象共有的内存空间。static变量有点类似于C中的全局变量的概念；静态表示的是内存的共享，就是它的每一个实例都指向同一个内存地址。把static拿来，就是告诉JVM它是静态的，它的引用（含间接引用）都是指向同一个位置，在那个地方，你把它改了，它就不会变成原样，你把它清理了，它就不会回来了。<br>那静态变量与方法是在什么时候初始化的呢？对于两种不同的类属性，static属性与instance属性，初始化的时机是不同的。instance属性在创建实例的时候初始化，static属性在类加载，也就是第一次用到这个类的时候初始化，对于后来的实例的创建，不再次进行初始化。<br>我们常可看到类似以下的例子来说明这个问题：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class Student&#123;</div><div class="line">  static int numberOfStudents=0;</div><div class="line">  <span class="function"><span class="title">Student</span></span>() &#123;</div><div class="line">   numberOfStudents++;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>每一次创建一个新的Student实例时,成员numberOfStudents都会不断的递增,并且所有的Student实例都访问同一个numberOfStudents变量,实际上int numberOfStudents变量在内存中只存储在一个位置上。</p>
+<h2 id="GC"><a href="#GC" class="headerlink" title="GC"></a>GC</h2><p>垃圾回收是一种动态存储管理技术，它自动地释放不再被程序引用的对象，按照特定的垃圾收集算法来实现资源自动回收的功能。当一个对象不再被引用的时候，内存回收它占领的空间，以便空间被后来的新对象使用，以免造成内存泄露。 JAVA语言不允许程序员直接控制内存空间的使用。内存空间的分配和回收都是由JRE负责在后台自动进行的，尤其是无用内存空间的回收操作，只能由运行环境提供的一个超级线程进行监测和控制。一般是在CPU空闲或空间不足时自动进行垃圾回收，而程序员无法精确控制垃圾回收的时机和顺序等。当没有任何获得线程能访问一个对象时，该对象就符合垃圾回收条件。垃圾回收器如发现一个对象不能被任何活线程访问时，他将认为该对象符合删除条件，就将其加入回收队列，但不是立即销毁对象，何时销毁并释放内存是无法预知的。垃圾回收不能强制执行，然而Java提供了一些方法（如：System.gc()方法），允许你请求JVM执行垃圾回收，而不是要求，虚拟机会尽其所能满足请求，但是不能保证JVM从内存中删除所有不用的对象。垃圾收集系统尝试在对象不被使用时把他们从内存中删除。然而，如果保持太多活的对象，系统则可能会耗尽内存。垃圾回收器不能保证有足够的内存，只能保证可用内存尽可能的得到高效的管理。<br>当对象没有对他可到达引用时，他就符合垃圾回收的条件。也就是说如果没有对他的引用，删除对象的引用就可以达到目的，因此我们可以把引用变量设置为null，来符合垃圾回收的条件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">StringBuffer sb = new StringBuffer(<span class="string">"hello"</span>);</div><div class="line">System.out.println(sb);</div><div class="line">sb=null;</div></pre></td></tr></table></figure></p>
+<p>参考资料:<br><a href="http://blog.csdn.net/tutngfei1129287460/article/details/7383480" target="_blank" rel="external">http://blog.csdn.net/tutngfei1129287460/article/details/7383480</a><br><a href="http://blog.csdn.net/lengyuhong/article/details/5953544" target="_blank" rel="external">http://blog.csdn.net/lengyuhong/article/details/5953544</a></p>
 
       
 
@@ -214,6 +237,17 @@ Quick">
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">java基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -264,7 +298,7 @@ Quick">
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/01/19/hello-world/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/01/20/java内存管理/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -295,7 +329,7 @@ Quick">
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 John Doe
+    		&copy; 2017 Idear Lee
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -372,6 +406,10 @@ Quick">
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">java基础</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -422,27 +460,19 @@ Quick">
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
+              <a href="/www.leeco.com" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>LeEco</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
+              <a href="http://lib.csdn.net/base/11" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Pyton</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
+              <a href="https://developers.google.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Google</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
+              <a href="http://nodejs.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Node</a>
             </li>
           
         </ul>
